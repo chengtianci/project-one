@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EnableScheduling   // 开启定时任务
 public class ScheduleTask {
 
-    @Scheduled(cron = "0/5 * * * * ?")
+//    @Scheduled(cron = "0/5 * * * * ?")
     //或直接指定时间间隔，例如：5秒
     //@Scheduled(fixedRate=5000)`
     private void configureTasks() {
