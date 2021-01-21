@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "custom.token",
+      "type": "java.lang.String",
+      "description": "Description for custom.token."
+    }
+  ]
+}
