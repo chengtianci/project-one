@@ -1,17 +1,22 @@
 package org.chengtc.TTJJcrawler.controller;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import org.chengtc.TTJJcrawler.crawler.impl.TTJJCrawlerAdaptor;
+import org.chengtc.TTJJcrawler.dto.FundBaseInfoDto;
+import org.chengtc.TTJJcrawler.utils.FileUtils;
 import org.chengtc.TTJJcrawler.utils.JsonResult;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
+import java.io.*;
+import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
 
 /**
  * @name: TTJJController
@@ -32,12 +37,14 @@ public class TTJJController {
      * @date 2021/1/20 下午2:23
      */
     @GetMapping("excel")
-    public JsonResult excel(@RequestParam("key")String key) throws IOException {
+    public JsonResult excel(@RequestParam("key")String key) throws Exception {
         HashMap<String, String> map = new HashMap<>();
         map.put("spm","search");
         map.put("key",key);
         Document doc = ttjjCrawlerAdaptor.processs(map);
-        System.out.println(doc);
+        FileUtils.wirteHtml("first",doc.toString());
+        List<FundBaseInfoDto> dataList = ttjjCrawlerAdaptor.prase(doc);
+        EasyExcel.write(key+"."+ExcelTypeEnum.XLSX, FundBaseInfoDto.class).sheet(key+"."+ExcelTypeEnum.XLSX).doWrite(dataList);
         return JsonResult.success();
     }
 
