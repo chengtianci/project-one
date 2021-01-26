@@ -40,6 +40,7 @@ public class NotifyService {
      *                2 Html
      *                3 Markdown
      */
+
     public void sendMsg(String summary, String content) {
         Message message = new Message();
         message.setAppToken(token);
