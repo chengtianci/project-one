@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.chengtc.TTJJcrawler.crawler.ICrawlerAdaptor;
 import org.chengtc.TTJJcrawler.dto.FundBaseInfoDto;
 import org.chengtc.TTJJcrawler.service.WebClientService;
-import org.chengtc.TTJJcrawler.utils.DateUtils;
 import org.chengtc.TTJJcrawler.utils.JsoupUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @name: TTJJCrawlerAdaptor

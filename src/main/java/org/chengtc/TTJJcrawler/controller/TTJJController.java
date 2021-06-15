@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.*;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +21,7 @@ import java.util.List;
  * @author: chengtianci
  * @date: 2021/1/20 上午11:13
  */
-@RestController
+@RestController("/ttjj")
 public class TTJJController {
     @Autowired
     TTJJCrawlerAdaptor ttjjCrawlerAdaptor;
@@ -36,7 +33,7 @@ public class TTJJController {
      * @describe:
      * @date 2021/1/20 下午2:23
      */
-    @GetMapping("excel")
+    @GetMapping("/excel")
     public JsonResult excel(@RequestParam("key")String key) throws Exception {
         HashMap<String, String> map = new HashMap<>();
         map.put("spm","search");
